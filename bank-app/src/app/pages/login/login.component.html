@@ -1,0 +1,35 @@
+<div class="card container">
+    <div class="card-head">
+        <p>Login</p>
+    </div>
+
+    <div class="card-body">
+        <div class="text-left text-dark">
+            <form class="form">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="email">email*</label>
+                            <input class="form-control" type="text" id="email" placeholder="email">
+                        </div>
+
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="password">password*</label>
+                            <input class="form-control" type="password" id="password" placeholder="password">
+                        </div>
+
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <button class="form-control btn btn-success" (click)="submitLogin()"><i *ngIf="loading" class="fa fa-spinner" aria-hidden="true"></i>
+                            <span>Submit</span></button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
