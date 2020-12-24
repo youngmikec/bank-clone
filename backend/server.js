@@ -1,9 +1,9 @@
+// require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const chalk = require('chalk');
+//const chalk = require('chalk');
 const customerRoutes = require('../backend/routes/customers');
 
-require('dotenv').config();
 
 // server port number for development
 const PORT = 4500;
@@ -14,7 +14,10 @@ const app = express();
 
 //Connect to mongodb database
 //mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
-mongoose.connect('mongodb://localhost/bank-customers', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/bank-customers', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 // Check if db is properly connected.   
 const db = mongoose.connection;
@@ -27,7 +30,7 @@ db.once('open', () => console.log('Database connected'));
 
 app.use(express.json());
 
-app.use('/customer', customerRoutes)
+app.use('/customer', customerRoutes);
 
 
 app.get('/', (req, res) => {

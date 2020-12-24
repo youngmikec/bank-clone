@@ -11,6 +11,7 @@ const customerSchema = new mongoose.Schema({
     address: { type: String, required: true },
     phone: { type: String, required: true },
     createdDate: { type: String, required: true, default: Date.now() },
+    token: { type: String, required: true, default: '12345678910' }
 });
 
 

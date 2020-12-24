@@ -2,6 +2,7 @@ const express = require('express');
 // const customer = require('../model/customer');
 const router = express.Router();
 const Customer = require('../model/customer');
+const tokenGenerator = require('../helpers/utilities');
 
 
 // route for getting all customers
@@ -37,12 +38,17 @@ router.post('/', async(req, res) => {
         email: req.body.email,
         address: req.body.address,
         phone: req.body.phone,
-        createdAt: Date.now()
+        createdAt: Date.now(),
+        token: tokenGenerator()
     });
 
     try {
         const newCustomer = await customer.save();
-        res.status(201).json(newCustomer);
+        res.status(201).json({
+            success: true,
+            payload: newCustomer,
+            message: `Customer created`
+        });
     } catch (error) {
         res.status(400).json({
             success: false,
