@@ -1,14 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from '../app/pages/login/login.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { appRoutes } from './appRoutes';
-import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './pages/login/login/login.component';
+import { AuthService } from './services/auth.service';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -21,9 +24,14 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
     RouterModule.forRoot(appRoutes),
     AppRoutingModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    ApiService
+  ],
   bootstrap: [AppComponent, LoginComponent]
 })
 export class AppModule { }

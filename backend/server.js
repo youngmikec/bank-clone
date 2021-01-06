@@ -1,6 +1,7 @@
 // require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const io = require('socket.io');
 //const chalk = require('chalk');
 const customerRoutes = require('../backend/routes/customers');
 
@@ -11,6 +12,9 @@ const PORT = 4500;
 
 // Instantiate app
 const app = express();
+const server = require('http').createServer(app);
+
+
 
 //Connect to mongodb database
 //mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });

@@ -114,12 +114,18 @@ router.delete('/:id', getCustomer, async(req, res) => {
 async function getCustomer(req, res, next) {
     let customer;
     try {
-        customer = await Customer.findById(req.params.id);
+        customer = await Customer.findById((req.params.id) || (req.params.email && req.params.password));
         if (customer == null) {
             return res.status(404).json({
                 success: false,
                 payload: customer,
                 message: `no customer found`
+            })
+        } else {
+            return res.status(200).json({
+                success: true,
+                payload: customer,
+                message: `${customer.length} customer(s) found`
             })
         }
     } catch (error) {

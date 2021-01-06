@@ -1,6 +1,6 @@
- import { Routes } from '@angular/router';
- import { LoginComponent } from '../app/pages/login/login.component';
- import { DashboardComponent } from './dashboard/dashboard/dashboard.component'
+import { Routes } from '@angular/router';
+import { LoginComponent } from '../app/pages/login/login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component'
 
 export const appRoutes: Routes = [
 {path: 'login', component: LoginComponent},
